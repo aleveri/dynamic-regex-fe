@@ -1,0 +1,47 @@
+mat-form-field {
+  width: 100%;
+  max-width: 250px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.section-card {
+  margin: 20px 0;
+}
+
+mat-form-field {
+  width: 100%;
+  display: block;
+}
+
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.custom-highlight {
+  --highlight-color: #1976d2; 
+}
+
+.custom-highlight .mat-form-label {
+  color: var(--highlight-color) !important;
+  font-weight: bold;
+}
+
+.custom-highlight .mat-input-element:disabled {
+  color: var(--highlight-color) !important;
+  border-bottom: 1px solid var(--highlight-color) !important;
+}
+
+.custom-highlight .mat-form-field-underline .mat-form-field-ripple {
+  background-color: var(--highlight-color) !important;
+}
+
+.icon-success {
+  color: green;
+}
+
+.icon-error {
+  color: red;
+}

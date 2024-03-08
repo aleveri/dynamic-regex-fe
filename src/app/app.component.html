@@ -1,0 +1,51 @@
+<mat-card id="section2" class="section-card">
+  <mat-card-content>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Text</mat-label>
+        <input matInput [(ngModel)]="text" placeholder="Text to validate">
+        <mat-icon *ngIf="isValid; else crossIcon" aria-hidden="false" aria-label="Check icon" class="icon-success">check_circle</mat-icon>
+        <ng-template #crossIcon>
+          <mat-icon aria-hidden="false" aria-label="Cross icon" class="icon-error">cancel</mat-icon>
+        </ng-template>
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" (click)="validate()">Submit</button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card style="margin-top: 20px;" id="section1" class="section-card">
+  <mat-card-content>
+    <mat-slide-toggle [(ngModel)]="allowNum">Allow Numeric</mat-slide-toggle>
+    <mat-slide-toggle [(ngModel)]="allowAlph">Allow Alpha</mat-slide-toggle>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Minimum Length</mat-label>
+      <input matInput type="number" [(ngModel)]="min">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Maximum Length</mat-label>
+      <input matInput type="number" [(ngModel)]="max">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Allow Special Characters</mat-label>
+      <input matInput type="text" [(ngModel)]="specialChars">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Not Allow Special Characters</mat-label>
+      <input matInput type="text" [(ngModel)]="notSpecialChars">
+    </mat-form-field>
+    <div>
+      <button mat-raised-button color="primary" (click)="generate()">Generate</button>
+    </div>
+    <mat-form-field appearance="fill" class="custom-highlight">
+      <mat-label>Regex</mat-label>
+      <input matInput type="text" [(ngModel)]="result" disabled>
+    </mat-form-field>
+  </mat-card-content>
+</mat-card>
