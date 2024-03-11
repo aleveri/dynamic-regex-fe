@@ -11,13 +11,13 @@ export class AppComponent {
   regex: string = '';
   text: string = '';
   result: string = '';
+  message: string = '';
   isValid: boolean = false;
   allowNum: boolean = false;
   allowAlph: boolean = false;
   min: number = 0;
   max: number = 0;
   specialChars: string = '';
-  notSpecialChars: string = '';
 
   constructor(private generatorService: GeneratorService) {
   }
@@ -26,6 +26,7 @@ export class AppComponent {
     if (!this.isNullOrEmpty(this.result)) {
       this.generatorService.getData(this.text, this.result).subscribe((x: any) => {
         this.isValid = x.isValid;
+        this.message = x.message;
       });
     }
   }
@@ -36,8 +37,7 @@ export class AppComponent {
       allowAlphaNumeric: this.allowAlph,
       minLength: this.min,
       maxLength: this.max,
-      allowedSpecialChars: this.specialChars,
-      notAllowedSpecialChars: this.notSpecialChars
+      allowedSpecialChars: this.specialChars
     };
     this.generatorService.postData(configObject).subscribe((x: any) => {
       this.result = x.expression;

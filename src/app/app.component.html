@@ -4,12 +4,19 @@
       <mat-form-field appearance="fill">
         <mat-label>Text</mat-label>
         <input matInput [(ngModel)]="text" placeholder="Text to validate">
-        <mat-icon *ngIf="isValid; else crossIcon" aria-hidden="false" aria-label="Check icon" class="icon-success">check_circle</mat-icon>
-        <ng-template #crossIcon>
-          <mat-icon aria-hidden="false" aria-label="Cross icon" class="icon-error">cancel</mat-icon>
-        </ng-template>
+        <mat-hint>
+          <mat-icon *ngIf="isValid; else crossIcon" aria-hidden="false" aria-label="Check icon" class="icon-success">check_circle</mat-icon>
+          <ng-template #crossIcon>
+            <mat-icon aria-hidden="false" aria-label="Cross icon" class="icon-error">cancel</mat-icon>
+          </ng-template>
+          <span *ngIf="isValid; else errorMessage" class="hint-success">{{message}}</span>
+          <ng-template #errorMessage>
+            <span class="hint-error">{{message}}</span>
+          </ng-template>
+        </mat-hint>
       </mat-form-field>
     </div>
+    
     <div>
       <button mat-raised-button color="primary" (click)="validate()">Submit</button>
     </div>
@@ -34,11 +41,6 @@
     <mat-form-field appearance="fill">
       <mat-label>Allow Special Characters</mat-label>
       <input matInput type="text" [(ngModel)]="specialChars">
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Not Allow Special Characters</mat-label>
-      <input matInput type="text" [(ngModel)]="notSpecialChars">
     </mat-form-field>
     <div>
       <button mat-raised-button color="primary" (click)="generate()">Generate</button>
